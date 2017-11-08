@@ -1,0 +1,129 @@
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <div  class="row" >
+  <div class="col-xs-5">
+  <div class="form-group">
+    <label for="title">Coupon Title</label>
+    <input type="text" id="title" name="title"
+      class="form-control"
+      [(ngModel)]="editedCoupon.title"
+      ngModel required   minlength="3" #titleCtrl="ngModel"  [disabled]='editMode'>
+    <span class="help-block" *ngIf="titleCtrl.invalid && titleCtrl.touched">
+      Please enter valid coupon title(at least 3 char )</span>
+  </div>
+</div>
+  </div>
+  <div class="row">
+     <div  class="col-xs-2">
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" name="amount"
+        class="form-control"  [(ngModel)]="editedCoupon.amount"
+        ngModel required
+        pattern="^[1-9]+[0-9]*$"
+        #amount="ngModel">
+      <span class="help-block" *ngIf="amount.invalid && amount.touched">
+        Please enter valid coupon amount(only positive numbers)</span>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" id="price" name="price"
+        class="form-control"
+        [(ngModel)]="editedCoupon.price"
+        ngModel required    pattern="[0-9]*" #price="ngModel">
+      <span class="help-block" *ngIf="price.invalid && price.touched">
+        Please enter valid coupon amount(only positive numbers)</span>
+    </div>
+  </div>
+ </div>
+ <div class="row   form-group ">
+<div class="col-xs-5">
+    <label for="message">Message</label>
+    <input type="text" id="message" name="message"
+      class="form-control"
+      [(ngModel)]="editedCoupon.message"
+      ngModel required    minlength="5" #message="ngModel">
+    <span class="help-block" *ngIf="message.invalid && message.touched">
+      Please enter valid coupon title(at least 5 char , max 45 char)</span>
+</div>
+ </div>
+
+<div class="row">
+ <div  class="col-xs-3">
+  <label for="type">Type</label>
+  <select  name="type" class='form-control' [(ngModel)]="selectedType" ngModel  #type="ngModel"  ngModel required  >
+            <option *ngFor="let type of coponType"
+                     [ngValue]="type.value" >{{type.value}}
+            </option>
+  </select >
+   <span class="help-block" *ngIf="type.invalid && type.touched">
+      Please select one option</span>
+</div>
+</div>
+<!-- <div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group " appDropdown >
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle">
+        Manage Recipe <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a >To Shopping List</a></li>
+        <li><a href="#">Edit Recipe</a></li>
+        <li><a href="#">Delete Recipe</a></li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+
+ <div class="row">
+  <div  class="col-xs-3">
+  <div class="input-group date" id='datetimepicker1' >
+    <div class="form-group">
+    <label for="startDate">Start Date</label>
+    <input type="date" id="startDate" name="startDate"
+      class="form-control"
+      [(ngModel)]="editedCoupon.startDate"
+      ngModel required    #startDate="ngModel"  >
+    <span class="help-block" *ngIf="startDate.invalid && startDate.touched">
+      Please enter valid date</span>
+    </div>
+    </div>
+  </div>
+<div class="input-group date" id='datetimepicker2' >
+  <div class="form-group">
+    <label for="endDate">End Date</label>
+     <input type="date" id="endDate" name="endDate"
+      class="form-control"
+      [(ngModel)]="editedCoupon.endDate"
+      ngModel required    #endDate="ngModel">
+    <span class="help-block" *ngIf="endDate.invalid && endDate.touched">
+      Please enter valid coupon title(at least 3 char )</span>
+ </div>
+</div>
+ </div>
+  <div class="form-group">
+       <label for="image">Image</label>
+       <input type="text" id="image" name="image"
+      class="form-control"  [ngModel]='getImagePath()'
+      ngModel required   minlength="5" #image="ngModel">
+    <span class="help-block" *ngIf="image.invalid && image.touched">
+      Please enter valid imape path(at least 5 char )</span>
+  </div>
+
+    <button class="btn btn-success"
+    type="submit" [disabled]="form.invalid"> {{ editMode ? 'Update' : 'Add' }}</button>
+    <button class="btn btn-primary"
+    type="button" (click)="onClear(form)">Clear </button>
+
+</form>
+
+
+
+
+
+<!--
+(public id: number, public title: string, public amount: number, public message: string,
+              public type: string , public endDate: Date, public startDate: Date, public price: number , public image: string ) {
+-->

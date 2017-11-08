@@ -1,0 +1,62 @@
+<div class="input-group">
+    <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+    <input type="text"  [(ngModel)]="filteredSearch" placeholder="Type to search by name...">
+
+  </div>
+<div>
+<div>
+   <table class="table table-hover   .table-responsive">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Coupon Title</th>
+        <th *ngIf="loginAs=='Company'">Amount</th>
+        <th>price</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Start Valid Date</th>
+        <th>Expiration Date</th>
+        <th>image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let coupon of couponData  | filter:filteredSearch:'title' ; let i = index">
+        <td>{{coupon.ID}}</td>
+        <td>{{coupon.title}}</td>
+        <td *ngIf="loginAs=='Company'">{{coupon.amount}}</td>
+        <td>{{coupon.price}}</td>
+        <td>{{coupon.type}}</td>
+        <td>{{coupon.message}}</td>
+        <td>{{coupon.startDate}}</td>
+        <td>{{coupon.endDate}}</td>
+        <td><img src={{coupon.image}} class="img-responsive" alt="Cinque Terre" width="110" height="60"></td>
+        <!-- display icons only if you company -->
+        <td *ngIf="loginAs=='Company'"> <button (click)='deleteCoupon(coupon)' type="button"
+          class="btn btn-default" aria-label="Left Align">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </button>
+         <button  (click)='onEditCoupon(coupon)' type="button"
+          class="btn btn-default" aria-label="Left Align">
+          <span class="glyphicon   glyphicon-pencil" aria-hidden="true"></span>
+         </button>
+        </td>
+
+       <!-- display icons only if you customers -->
+        <td *ngIf="loginAs=='Customer'"> <button (click)='onBuyCoupon(coupon,i)' type="button"
+          class="btn btn-default" aria-label="Left Align" Buy>
+          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+        </button>
+      </td>
+      <td  *ngIf="isErrorHappend==true && selectedIndex==i" >
+          <div class="alert alert-warning">
+              <br>
+              <strong>Warning!</strong> {{errorMessage}}.
+            </div>
+
+      </td>
+     </tr>
+
+    </tbody>
+    </table>
+</div>

@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* .panel.customClass .panel-body {
+  color: #fff;
+  background-color: #000;
+  width: 275px;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+} */
+
+.panel-group  .panel  .panel-heading {
+  color: rgba(181, 173, 173, 0.75);
+  border: none;
+  background-color: #282424;
+  width: 220px;
+  /* border-bottom: 1px solid rgba(0,0,0,.15); */
+  }
+
+  .panel-group:hover,
+  .panel:hover,
+  .panel-heading:hover {
+    color: #575252;
+  }
+
+ .card {
+    border: none;
+    border-color: #282424
+  }
+
+
+  /* .panel  {
+    color: #fff;
+    background-color: #282424;
+    width: 220px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    }
+   .panel-heading {
+      color: #fff;
+      background-color: #282424;
+      width: 220px;
+      border-bottom: 1px solid rgba(0,0,0,.15);
+   } */
+
+  /* .panel-group>.panel>.panel-heading {
+    color: #282424;
+    background-color: #000;
+  } */
+  /* div.panel-heading>.card-header {
+    color: #282424;
+    background-color: #000;
+  } */
+
+  /* accordion-group>.panel>.panel-heading {
+    color: #282424;
+    background-color: #000;
+  } */
+
+/* .customClass {
+  .panel-heading {
+    color: #282424;
+    background-color: #000;
+  }
+  } */
